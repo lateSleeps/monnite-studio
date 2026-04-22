@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/lib/language-context";
 
 const projectImages = [
@@ -40,10 +41,13 @@ function ProjectRow({ catIndex, visible }: { catIndex: number; visible: boolean 
               onMouseMove={(e) => setTooltip({ visible: true, x: e.clientX, y: e.clientY })}
               onMouseLeave={() => setTooltip(tp => ({ ...tp, visible: false }))}
             >
-              <img
+              <Image
                 src={projectImages[catIndex][i]}
                 alt={project.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="space-y-2">

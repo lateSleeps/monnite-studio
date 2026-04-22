@@ -1,17 +1,12 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { useMotionValue, animate, motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import useMeasure from 'react-use-measure';
+import { useRef } from 'react';
 
 type InfiniteSliderProps = {
   children: React.ReactNode;
   gap?: number;
-  duration?: number;
-  durationOnHover?: number;
   speed?: number;
   speedOnHover?: number;
-  direction?: 'horizontal' | 'vertical';
   reverse?: boolean;
   className?: string;
 };
@@ -19,83 +14,46 @@ type InfiniteSliderProps = {
 export function InfiniteSlider({
   children,
   gap = 16,
-  duration,
-  durationOnHover,
-  speed,
+  speed = 25,
   speedOnHover,
-  direction = 'horizontal',
   reverse = false,
   className,
 }: InfiniteSliderProps) {
-  const effectiveDuration = duration ?? (speed ? speed : 25);
-  const effectiveDurationOnHover = durationOnHover ?? (speedOnHover ? speedOnHover : undefined);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  const [currentDuration, setCurrentDuration] = useState(effectiveDuration);
-  const [ref, { width, height }] = useMeasure();
-  const translation = useMotionValue(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    let controls: { stop: () => void } | undefined;
-    const size = direction === 'horizontal' ? width : height;
-    const contentSize = size + gap;
-    const from = reverse ? -contentSize / 2 : 0;
-    const to = reverse ? 0 : -contentSize / 2;
-
-    if (isTransitioning) {
-      controls = animate(translation, [translation.get(), to], {
-        ease: 'linear',
-        duration: currentDuration * Math.abs((translation.get() - to) / contentSize),
-        onComplete: () => {
-          setIsTransitioning(false);
-          setKey((prevKey) => prevKey + 1);
-        },
-      });
-    } else {
-      controls = animate(translation, [from, to], {
-        ease: 'linear',
-        duration: currentDuration,
-        repeat: Infinity,
-        repeatType: 'loop',
-        repeatDelay: 0,
-        onRepeat: () => {
-          translation.set(from);
-        },
-      });
+  const handleMouseEnter = () => {
+    if (speedOnHover && trackRef.current) {
+      trackRef.current.style.animationDuration = `${speedOnHover}s`;
     }
+  };
 
-    return controls?.stop;
-  }, [key, translation, currentDuration, width, height, gap, isTransitioning, direction, reverse]);
-
-  const hoverProps = effectiveDurationOnHover
-    ? {
-        onHoverStart: () => {
-          setIsTransitioning(true);
-          setCurrentDuration(effectiveDurationOnHover);
-        },
-        onHoverEnd: () => {
-          setIsTransitioning(true);
-          setCurrentDuration(effectiveDuration);
-        },
-      }
-    : {};
+  const handleMouseLeave = () => {
+    if (speedOnHover && trackRef.current) {
+      trackRef.current.style.animationDuration = `${speed}s`;
+    }
+  };
 
   return (
-    <div className={cn('overflow-hidden', className)}>
-      <motion.div
+    <div
+      className={cn('overflow-hidden', className)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <style>{`
+        @keyframes infinite-scroll-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes infinite-scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+      `}</style>
+      <div
+        ref={trackRef}
         className="flex w-max"
         style={{
-          ...(direction === 'horizontal' ? { x: translation } : { y: translation }),
           gap: `${gap}px`,
-          flexDirection: direction === 'horizontal' ? 'row' : 'column',
+          animation: `${reverse ? 'infinite-scroll-right' : 'infinite-scroll-left'} ${speed}s linear infinite`,
         }}
-        ref={ref}
-        {...hoverProps}
       >
         {children}
         {children}
-      </motion.div>
+      </div>
     </div>
   );
 }

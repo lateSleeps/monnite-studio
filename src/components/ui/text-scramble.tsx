@@ -1,6 +1,5 @@
 'use client';
-import { type JSX, useEffect, useState } from 'react';
-import { motion, MotionProps } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 type TextScrambleProps = {
   children: string;
@@ -11,10 +10,9 @@ type TextScrambleProps = {
   className?: string;
   trigger?: boolean;
   onScrambleComplete?: () => void;
-} & MotionProps;
+};
 
-const defaultChars =
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+const defaultChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 export function TextScramble({
   children,
@@ -25,16 +23,11 @@ export function TextScramble({
   as: Component = 'p',
   trigger = true,
   onScrambleComplete,
-  ...props
 }: TextScrambleProps) {
-  const MotionComponent = motion.create(
-    Component as keyof JSX.IntrinsicElements
-  );
   const [displayText, setDisplayText] = useState(children);
   const [isAnimating, setIsAnimating] = useState(false);
-  const text = children;
 
-  const scramble = async () => {
+  const scramble = () => {
     if (isAnimating) return;
     setIsAnimating(true);
 
@@ -42,19 +35,15 @@ export function TextScramble({
     let step = 0;
 
     const interval = setInterval(() => {
-      let scrambled = '';
       const progress = step / steps;
+      let scrambled = '';
 
-      for (let i = 0; i < text.length; i++) {
-        if (text[i] === ' ') {
-          scrambled += ' ';
-          continue;
-        }
-        if (progress * text.length > i) {
-          scrambled += text[i];
+      for (let i = 0; i < children.length; i++) {
+        if (children[i] === ' ') { scrambled += ' '; continue; }
+        if (progress * children.length > i) {
+          scrambled += children[i];
         } else {
-          scrambled +=
-            characterSet[Math.floor(Math.random() * characterSet.length)];
+          scrambled += characterSet[Math.floor(Math.random() * characterSet.length)];
         }
       }
 
@@ -63,7 +52,7 @@ export function TextScramble({
 
       if (step > steps) {
         clearInterval(interval);
-        setDisplayText(text);
+        setDisplayText(children);
         setIsAnimating(false);
         onScrambleComplete?.();
       }
@@ -73,13 +62,18 @@ export function TextScramble({
   useEffect(() => {
     if (!trigger) return;
     scramble();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger]);
 
+  // Sync display text when children change (language switch)
+  useEffect(() => {
+    if (!isAnimating) setDisplayText(children);
+  }, [children, isAnimating]);
+
   return (
-    <MotionComponent className={`relative inline-block ${className ?? ''}`} {...props}>
-      {/* invisible original text holds the container width fixed */}
+    <Component className={`relative inline-block ${className ?? ''}`}>
       <span aria-hidden className="invisible">{children}</span>
       <span className="absolute inset-0 flex items-center justify-center">{displayText}</span>
-    </MotionComponent>
+    </Component>
   );
 }

@@ -117,7 +117,7 @@ export default function Hero() {
               }}
             >
               <div className="shrink-0 w-6 h-6 relative opacity-70">
-                <img src={brandIcons[i]} alt={name} className="w-full h-full object-contain" />
+                <img src={brandIcons[i]} alt={name} className="w-full h-full object-contain" loading="lazy" />
               </div>
               <span className="text-[1.25rem] lg:text-[14px] font-medium tracking-wide text-[#8a8a8a] capitalize">
                 {name}
