@@ -1,11 +1,5 @@
 "use client";
-import React from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { useState } from "react";
 
 const faqs = [
   {
@@ -31,6 +25,8 @@ const faqs = [
 ];
 
 export default function QnA() {
+  const [openIndex, setOpenIndex] = useState<number>(0);
+
   return (
     <section id="approach" className="py-16 md:py-24 bg-black">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-16">
@@ -44,22 +40,47 @@ export default function QnA() {
             </p>
           </div>
 
-          <Accordion className="w-full space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-b border-white/10 px-0">
-                <AccordionTrigger className="hover:no-underline py-6 group">
-                  <span className="text-xl md:text-[24px] font-semibold text-left text-text-secondary group-aria-expanded/accordion-trigger:text-white transition-colors duration-300 font-sans">
-                    {faq.question}
-                  </span>
-                </AccordionTrigger>
-                <AccordionContent className="pb-8">
-                  <p className="text-base md:text-[16px] text-text-secondary max-w-lg leading-relaxed font-sans">
-                    {faq.answer}
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <div className="w-full">
+            {faqs.map((faq, i) => {
+              const isOpen = openIndex === i;
+              return (
+                <div key={i} className="border-b border-white/10">
+                  <button
+                    className="w-full flex items-center justify-between py-6 text-left cursor-pointer"
+                    onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                  >
+                    <span className={`text-xl md:text-[24px] font-semibold font-sans transition-colors duration-300 ${isOpen ? "text-white" : "text-text-secondary"}`}>
+                      {faq.question}
+                    </span>
+                    <span className="shrink-0 ml-4 w-8 h-8 rounded-full border border-white/30 flex items-center justify-center">
+                      <span
+                        className="block w-3 h-px bg-white transition-transform duration-300"
+                        style={{ transform: isOpen ? "rotate(0deg)" : "rotate(0deg)" }}
+                      />
+                      <span
+                        className="absolute block w-3 h-px bg-white transition-transform duration-300"
+                        style={{ transform: isOpen ? "rotate(90deg) scaleX(0)" : "rotate(90deg)" }}
+                      />
+                    </span>
+                  </button>
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateRows: isOpen ? "1fr" : "0fr",
+                      transition: "grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1)",
+                    }}
+                  >
+                    <div style={{ overflow: "hidden" }}>
+                      <p className="text-base md:text-[16px] text-text-secondary leading-relaxed font-sans pb-8 max-w-lg">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
