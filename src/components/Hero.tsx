@@ -39,7 +39,7 @@ export default function Hero() {
       {/* Overlay to improve text readability */}
       {/* Removed overlay to match Image 4 where left side of earth provides natural contrast */}
 
-      <div className="relative z-10 w-full px-6 md:px-8 lg:px-16 max-w-[1440px] mx-auto flex-grow flex flex-col pt-[calc(5rem+2rem)] md:pt-[calc(5rem+4rem)] pb-8">
+      <div className="relative z-10 w-full px-6 md:px-8 lg:px-16 max-w-[1440px] mx-auto flex-grow flex flex-col pt-[calc(5rem+2rem)] md:pt-[calc(5rem+4rem)] pb-8 justify-end md:justify-start">
         <div className="max-w-4xl space-y-8">
           <h1
             className="text-[2.625rem] md:text-[64px] font-semibold leading-[1.1] tracking-tight font-sans text-left"

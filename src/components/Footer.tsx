@@ -83,18 +83,16 @@ export default function Footer() {
 
         {/* Brand Bottom */}
         <div className="relative pt-12">
-          <div className="flex items-baseline justify-between">
-            <TextGlitch
-              text="Monnite."
-              hoverText="Monnite."
-              as="h1"
-              overlayBg="#ffffff"
-              overlayTextColor="#000000"
-              className="text-[clamp(5rem,18vw,20rem)] font-bold tracking-tighter leading-[0.8] -translate-x-[0.05em] text-white"
-            />
-            <div className="text-[16px] text-white/90 font-medium tracking-wide pb-4 lg:pb-8">
-              ©2026 Monnite Studio
-            </div>
+          <TextGlitch
+            text="Monnite."
+            hoverText="Monnite."
+            as="h1"
+            overlayBg="#ffffff"
+            overlayTextColor="#000000"
+            className="text-[clamp(5rem,18vw,20rem)] font-bold tracking-tighter leading-[0.8] -translate-x-[0.05em] text-white"
+          />
+          <div className="flex justify-start md:justify-end mt-2 md:mt-0 md:absolute md:bottom-0 md:right-0 pb-2 md:pb-4 lg:pb-8">
+            <span className="text-[16px] text-white/90 font-medium tracking-wide">©2026 Monnite Studio</span>
           </div>
         </div>
       </div>
