@@ -6,10 +6,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { PlusIcon } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
 const WA_NUMBER = "6285111221632";
 
 export default function ContactForm() {
+  const { t } = useLanguage();
   const [submitTrigger, setSubmitTrigger] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -45,42 +47,43 @@ export default function ContactForm() {
 
           <div className="space-y-2 mb-8">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-              Let&apos;s start a<br />conversation
+              {t.contact.heading.split(" a ").map((part, i) =>
+                i === 0 ? <span key={i}>{part} a<br /></span> : <span key={i}>{part}</span>
+              )}
             </h2>
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed pt-2">
-              Tell us about your project or idea. We help companies explore product
-              opportunities and build digital products people actually want to use.
+              {t.contact.subheading}
             </p>
           </div>
 
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">{t.contact.nameLabel}</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="Your name"
+                placeholder={t.contact.namePlaceholder}
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t.contact.emailLabel}</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder={t.contact.emailPlaceholder}
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message">{t.contact.messageLabel}</Label>
               <Textarea
                 id="message"
-                placeholder="Tell us about your project..."
+                placeholder={t.contact.messagePlaceholder}
                 className="min-h-[120px]"
                 required
                 value={message}
@@ -93,7 +96,7 @@ export default function ContactForm() {
               onMouseEnter={() => setSubmitTrigger(true)}
             >
               <TextScramble as="span" trigger={submitTrigger} onScrambleComplete={() => setSubmitTrigger(false)} speed={0.03} duration={0.5}>
-                Send Message
+                {t.contact.cta}
               </TextScramble>
             </Button>
           </form>

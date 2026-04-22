@@ -4,37 +4,34 @@ import { Button } from "@/components/ui/button";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { TextGlitch } from "@/components/ui/text-glitch-effect";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useLanguage } from "@/lib/language-context";
 
-const valueBrands = [
-  { name: "Unlimited request", icon: "https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1a7a1e2705d8ee68c6f72_Unlimited%20request.svg" },
-  { name: "Fast Delivery", icon: "https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1a7a159cc7a1064b0c6e4_Fast%20Delivery.svg" },
-  { name: "Expert Designer", icon: "https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1a7a196e599e8efc32fb3_Expert%20Designer.svg" },
-  { name: "Easy Management", icon: "https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1a7a11353b66869abd132_Easy%20Management.svg" },
+const brandIcons = [
+  "https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1a7a1e2705d8ee68c6f72_Unlimited%20request.svg",
+  "https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1a7a159cc7a1064b0c6e4_Fast%20Delivery.svg",
+  "https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1a7a196e599e8efc32fb3_Expert%20Designer.svg",
+  "https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1a7a11353b66869abd132_Easy%20Management.svg",
 ];
 
 export default function Hero() {
+  const { t } = useLanguage();
   const [bookTrigger, setBookTrigger] = useState(false);
   const [waTrigger, setWaTrigger] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 100);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section className="relative h-screen flex flex-col bg-black overflow-hidden">
-      {/* Background Image Overlay like legacy */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
           backgroundImage: 'url("https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1ac3cc26268b88480d698_BG.webp")'
         }}
       />
-
-
-      {/* Overlay to improve text readability */}
-      {/* Removed overlay to match Image 4 where left side of earth provides natural contrast */}
 
       <div className="relative z-10 w-full px-6 md:px-8 lg:px-16 max-w-[1440px] mx-auto flex-grow flex flex-col pt-[calc(5rem+2rem)] md:pt-[calc(5rem+4rem)] pb-8 justify-end md:justify-start">
         <div className="max-w-4xl space-y-8">
@@ -46,16 +43,16 @@ export default function Hero() {
               transition: "transform 1.1s cubic-bezier(0.25,1,0.5,1) 0ms, opacity 1s ease 0ms",
             }}
           >
-            We build{" "}
+            {t.hero.heading1}{" "}
             <TextGlitch
-              text="digital products"
-              hoverText="digital products"
+              text={t.hero.headingGlitch}
+              hoverText={t.hero.headingGlitch}
               as="span"
               overlayBg="#ffffff"
               overlayTextColor="#000000"
             />
             <br className="hidden md:block"/>
-            that grow as you do.
+            {t.hero.heading2}
           </h1>
           <p
             className="text-[1rem] md:text-[20px] text-text-secondary max-w-2xl leading-relaxed"
@@ -65,7 +62,9 @@ export default function Hero() {
               transition: "transform 1.1s cubic-bezier(0.25,1,0.5,1) 150ms, opacity 1s ease 150ms",
             }}
           >
-            Building digital products that scale with your business,<br className="hidden md:block"/>from first launch to enterprise level.
+            {t.hero.subheading.split("\n").map((line, i) => (
+              <span key={i}>{line}{i === 0 && <br className="hidden md:block"/>}</span>
+            ))}
           </p>
           <div
             className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4"
@@ -81,7 +80,7 @@ export default function Hero() {
                 onMouseEnter={() => setBookTrigger(true)}
               >
                 <TextScramble as="span" trigger={bookTrigger} onScrambleComplete={() => setBookTrigger(false)} speed={0.03} duration={0.5}>
-                  Book a 15 min Call
+                  {t.hero.cta}
                 </TextScramble>
               </Button>
             </a>
@@ -99,7 +98,7 @@ export default function Hero() {
                   <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border-2 border-[#343434]" />
                 </div>
                 <TextScramble as="span" trigger={waTrigger} onScrambleComplete={() => setWaTrigger(false)} speed={0.03} duration={0.5}>
-                  Message via WhatsApp
+                  {t.hero.whatsapp}
                 </TextScramble>
               </Button>
             </a>
@@ -107,9 +106,9 @@ export default function Hero() {
         </div>
 
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-20 mt-auto">
-          {valueBrands.map((item, i) => (
+          {t.hero.brands.map((name, i) => (
             <div
-              key={item.name}
+              key={name}
               className="flex items-center gap-3 border-b border-white/20 pb-4"
               style={{
                 transform: visible ? "translateY(0)" : "translateY(40px)",
@@ -118,10 +117,10 @@ export default function Hero() {
               }}
             >
               <div className="shrink-0 w-6 h-6 relative opacity-70">
-                <img src={item.icon} alt={item.name} className="w-full h-full object-contain" />
+                <img src={brandIcons[i]} alt={name} className="w-full h-full object-contain" />
               </div>
               <span className="text-[1.25rem] lg:text-[14px] font-medium tracking-wide text-[#8a8a8a] capitalize">
-                {item.name}
+                {name}
               </span>
             </div>
           ))}

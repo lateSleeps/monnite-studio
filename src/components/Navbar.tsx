@@ -1,27 +1,71 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { AnimatedUnderline } from "@/components/ui/animated-underline";
-
-const links = [
-  { name: "Project", href: "#project", num: "01" },
-  { name: "About", href: "#about", num: "02" },
-  { name: "Services", href: "#services", num: "03" },
-  { name: "Question", href: "#approach", num: "04" },
-];
+import { useLanguage } from "@/lib/language-context";
+import { Globe } from "lucide-react";
 
 function smoothScrollTo(id: string) {
   const el = document.querySelector(id);
   if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function LangDropdown() {
+  const { lang, toggleLang } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="flex items-center gap-1.5 text-white/60 hover:text-white transition-colors cursor-pointer p-1"
+        aria-label="Select language"
+      >
+        <Globe size={16} strokeWidth={1.5} />
+        <span className="text-[12px] font-medium uppercase">{lang}</span>
+      </button>
+
+      {open && (
+        <div className="absolute top-full right-0 mt-2 bg-[#111] border border-white/10 rounded-[4px] overflow-hidden shadow-xl min-w-[80px]">
+          {(["en", "id"] as const).map((l) => (
+            <button
+              key={l}
+              onClick={() => { if (lang !== l) toggleLang(); setOpen(false); }}
+              className={`w-full text-left px-4 py-2.5 text-[13px] font-medium uppercase tracking-wide transition-colors cursor-pointer hover:bg-white/10 ${lang === l ? "text-white" : "text-white/40"}`}
+            >
+              {l === "en" ? "English" : "Indonesia"}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Navbar() {
+  const { lang, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [navBtnTrigger, setNavBtnTrigger] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [animateIn, setAnimateIn] = useState(false);
+
+  const links = [
+    { name: t.nav.project, href: "#project", num: "01" },
+    { name: t.nav.about, href: "#about", num: "02" },
+    { name: t.nav.services, href: "#services", num: "03" },
+    { name: t.nav.question, href: "#approach", num: "04" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -51,7 +95,7 @@ export default function Navbar() {
             Monnite Studio
           </Link>
 
-          {/* Desktop Links & CTA */}
+          {/* Desktop */}
           <div className="hidden md:flex items-center gap-8">
             <div className="flex items-center gap-8">
               {links.map((link) => (
@@ -66,33 +110,38 @@ export default function Navbar() {
               ))}
             </div>
             <div className="h-4 w-px bg-white/20 mx-2" />
+            <LangDropdown />
+            <div className="h-4 w-px bg-white/20" />
             <a href="https://cal.com/monnite-house/secret" target="_blank" rel="noopener noreferrer">
               <Button
                 className="rounded-[4px] bg-white text-black hover:bg-white/90 text-[16px] px-[24px] py-[12px] h-auto font-medium border-0 cursor-pointer"
                 onMouseEnter={() => setNavBtnTrigger(true)}
               >
                 <TextScramble as="span" trigger={navBtnTrigger} onScrambleComplete={() => setNavBtnTrigger(false)} speed={0.03} duration={0.5}>
-                  Book a 15 min Call
+                  {t.nav.cta}
                 </TextScramble>
               </Button>
             </a>
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            className="md:hidden relative z-[9999] flex items-center gap-2 cursor-pointer"
-            onClick={() => setMobileOpen((o) => !o)}
-            aria-label="Toggle menu"
-          >
-            <span className="text-white text-[14px] font-medium tracking-widest uppercase">
-              {mobileOpen ? "Close" : "Menu"}
-            </span>
-            <div className="flex flex-col justify-center gap-[5px] w-5">
-              <div className={`w-full h-px bg-white transition-all duration-300 ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-              <div className={`w-full h-px bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-              <div className={`w-full h-px bg-white transition-all duration-300 ${mobileOpen ? "-translate-y-[3px] -rotate-45" : ""}`} />
-            </div>
-          </button>
+          {/* Mobile */}
+          <div className="md:hidden flex items-center gap-4 relative z-[9999]">
+            <LangDropdown />
+            <button
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={() => setMobileOpen((o) => !o)}
+              aria-label="Toggle menu"
+            >
+              <span className="text-white text-[14px] font-medium tracking-widest uppercase">
+                {mobileOpen ? (lang === "en" ? "Close" : "Tutup") : "Menu"}
+              </span>
+              <div className="flex flex-col justify-center gap-[5px] w-5">
+                <div className={`w-full h-px bg-white transition-all duration-300 ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+                <div className={`w-full h-px bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+                <div className={`w-full h-px bg-white transition-all duration-300 ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+              </div>
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -107,13 +156,9 @@ export default function Navbar() {
           pointerEvents: mobileOpen ? "auto" : "none",
         }}
       >
-        {/* Nav Links */}
         <nav className="flex flex-col gap-0 flex-1">
           {links.map((link, i) => (
-            <div
-              key={link.name}
-              className="border-b border-white/10 py-5 overflow-hidden"
-            >
+            <div key={link.name} className="border-b border-white/10 py-5 overflow-hidden">
               <div
                 style={{
                   transform: animateIn ? "translateY(0)" : "translateY(100%)",
@@ -135,7 +180,6 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Bottom CTA */}
         <div
           style={{
             transform: animateIn ? "translateY(0)" : "translateY(20px)",
@@ -145,10 +189,10 @@ export default function Navbar() {
         >
           <a href="https://cal.com/monnite-house/secret" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
             <Button className="w-full rounded-[4px] bg-white text-black text-[16px] px-[24px] py-[14px] h-auto font-medium border-0">
-              Book a 15 min Call
+              {t.nav.cta}
             </Button>
           </a>
-          <p className="text-white/30 text-[12px] text-center mt-4 tracking-widest uppercase">Monnite Studio © 2026</p>
+          <p className="text-white/30 text-[12px] text-center mt-4 tracking-widest uppercase">{t.nav.copyright}</p>
         </div>
       </div>
     </>

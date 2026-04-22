@@ -1,30 +1,9 @@
 "use client";
 import { useState } from "react";
-
-const faqs = [
-  {
-    question: "How much does a project cost?",
-    answer: "It depends on scope and complexity. We work with fixed-price packages, not hourly rates. Book a 15-min call and we'll give you an exact quote based on your needs.",
-  },
-  {
-    question: "How long does it take?",
-    answer: "Most projects ship in 4-8 weeks. Brand websites take 4-6 weeks, e-commerce 6-8 weeks, custom products 8-12 weeks. Timeline confirmed during kickoff.",
-  },
-  {
-    question: "How does the process work?",
-    answer: "We kick off with a discovery call, then build in weekly sprints so you're never left guessing. After launch, we stick around for 30 days to make sure everything runs smooth.",
-  },
-  {
-    question: "What if the scope needs to change midway?",
-    answer: "We reassess and adjust pricing if needed. Small tweaks are included. Major scope changes require a brief amendment to timeline and budget. We keep you in the loop before proceeding.",
-  },
-  {
-    question: "Is there maintenance after the project?",
-    answer: "All projects include 30 days of post-launch support. After that, you can opt for a monthly retainer or pay per request. No vendor lock-in — you own the code.",
-  },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export default function QnA() {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
@@ -33,15 +12,15 @@ export default function QnA() {
         <div className="grid md:grid-cols-2 gap-16 lg:gap-32 items-start">
           <div className="space-y-6">
             <h2 className="text-[2rem] md:text-[52px] font-semibold leading-[1.2] font-sans text-left">
-              Questions we often get.
+              {t.qna.heading}
             </h2>
             <p className="text-base md:text-[16px] text-text-secondary leading-relaxed font-sans max-w-md">
-              Everything you need to know about partnering with Monnite Studio.
+              {t.qna.subheading}
             </p>
           </div>
 
           <div className="w-full">
-            {faqs.map((faq, i) => {
+            {t.qna.faqs.map((faq, i) => {
               const isOpen = openIndex === i;
               return (
                 <div key={i} className="border-b border-white/10">
@@ -52,11 +31,8 @@ export default function QnA() {
                     <span className={`text-xl md:text-[24px] font-semibold font-sans transition-colors duration-300 ${isOpen ? "text-white" : "text-text-secondary"}`}>
                       {faq.question}
                     </span>
-                    <span className="shrink-0 ml-4 w-8 h-8 rounded-full border border-white/30 flex items-center justify-center">
-                      <span
-                        className="block w-3 h-px bg-white transition-transform duration-300"
-                        style={{ transform: isOpen ? "rotate(0deg)" : "rotate(0deg)" }}
-                      />
+                    <span className="relative shrink-0 ml-4 w-8 h-8 rounded-full border border-white/30 flex items-center justify-center">
+                      <span className="block w-3 h-px bg-white transition-transform duration-300" />
                       <span
                         className="absolute block w-3 h-px bg-white transition-transform duration-300"
                         style={{ transform: isOpen ? "rotate(90deg) scaleX(0)" : "rotate(90deg)" }}
