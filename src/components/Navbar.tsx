@@ -46,7 +46,7 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 w-full z-[9999] transition-colors duration-300 ${
         isScrolled || mobileOpen ? "bg-black" : "bg-transparent"
       }`}>
-        <div className="w-full px-6 h-20 flex items-center justify-between">
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-16 h-20 flex items-center justify-between">
           <Link href="/" className="shrink-0 text-white font-semibold text-[20px] tracking-tight relative z-[9999]">
             Monnite Studio
           </Link>

@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import HeroShader from "./HeroShader";
 import { Button } from "@/components/ui/button";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { TextGlitch } from "@/components/ui/text-glitch-effect";
@@ -25,8 +24,6 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen flex flex-col bg-black overflow-hidden">
-      <HeroShader />
-      
       {/* Background Image Overlay like legacy */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
