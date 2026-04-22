@@ -1,0 +1,92 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { AnimatedUnderline } from "@/components/ui/animated-underline";
+
+export default function Footer() {
+  const [time, setTime] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const updateTime = () => {
+      const timeString = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Asia/Makassar',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      }).format(new Date());
+      setTime(timeString.replace(':', '.') + " WITA");
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!mounted) return null;
+
+  return (
+    <footer className="bg-black pt-16 pb-8 overflow-hidden">
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-16 space-y-16">
+        {/* Top row: left links + right studio info */}
+        <div className="flex flex-wrap md:flex-nowrap justify-between gap-10 items-start">
+          {/* Left: Contact + Navigation + Blog */}
+          <div className="flex flex-wrap gap-x-[60px] gap-y-8 items-start">
+            <div className="space-y-6">
+              <h5 className="text-[#8a8a8a] text-[16px] font-medium font-sans">Contact</h5>
+              <ul className="space-y-4 font-medium text-[16px] font-sans text-white/90">
+                <li><Link href="#" className="hover:text-white transition-colors"><AnimatedUnderline>Email</AnimatedUnderline></Link></li>
+                <li><Link href="#" className="hover:text-white transition-colors"><AnimatedUnderline>LinkedIn</AnimatedUnderline></Link></li>
+                <li><Link href="#" className="hover:text-white transition-colors"><AnimatedUnderline>Threads</AnimatedUnderline></Link></li>
+                <li><Link href="#" className="hover:text-white transition-colors"><AnimatedUnderline>Facebook</AnimatedUnderline></Link></li>
+              </ul>
+            </div>
+
+            <div className="space-y-6">
+              <h5 className="text-[#8a8a8a] text-[16px] font-medium font-sans">Navigation</h5>
+              <ul className="space-y-4 font-medium text-[16px] font-sans text-white/90">
+                <li><Link href="#project" className="hover:text-white transition-colors"><AnimatedUnderline>Project</AnimatedUnderline></Link></li>
+                <li><Link href="#about" className="hover:text-white transition-colors"><AnimatedUnderline>About</AnimatedUnderline></Link></li>
+                <li><Link href="#services" className="hover:text-white transition-colors"><AnimatedUnderline>Services</AnimatedUnderline></Link></li>
+                <li><Link href="#approach" className="hover:text-white transition-colors"><AnimatedUnderline>Approach</AnimatedUnderline></Link></li>
+              </ul>
+            </div>
+
+            <div className="mt-11">
+              <ul className="space-y-4 font-medium text-[16px] font-sans">
+                <li><span className="text-white/90">Blog<span className="text-[#8a8a8a] ml-1">(Coming Soon)</span></span></li>
+                <li><span className="text-white/90">Creative Space<span className="text-[#8a8a8a] ml-1">(Coming Soon)</span></span></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Right: Monnite Studio (aligned with Book a Call button position) */}
+          <div className="shrink-0 max-w-[320px] space-y-6">
+            <h5 className="text-[#8a8a8a] text-[16px] font-medium font-sans">Monnite Studio</h5>
+            <div className="space-y-4">
+              <p className="text-[16px] font-medium leading-relaxed font-sans text-white/90">
+                We help companies explore product opportunities, build products from scratch or elevate them to new levels.
+              </p>
+              <div className="text-white/90 text-[16px] font-medium font-sans">
+                <span>{time}</span> — Tabanan, Bali, Indonesia.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Brand Bottom */}
+        <div className="relative pt-12">
+          <div className="flex items-baseline justify-between">
+            <h1 className="text-[clamp(5rem,18vw,20rem)] font-bold tracking-tighter leading-[0.8] -translate-x-[0.05em] select-none text-white">
+              Monnite.
+            </h1>
+            <div className="text-[16px] text-white/90 font-medium tracking-wide pb-4 lg:pb-8">
+              ©2026 Monnite Studio
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

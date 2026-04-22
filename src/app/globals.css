@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-background: oklch(0% 0 0);
+  --color-foreground: oklch(98% 0 0);
+  
+  --color-surface-primary: oklch(15% 0 0);
+  --color-text-secondary: oklch(80% 0 0);
+  --color-text-muted: oklch(60% 0 0);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-border: oklch(20% 0 0);
+  --color-input: oklch(20% 0 0);
+  --color-ring: oklch(98% 0 0);
+  
+  --color-card: oklch(10% 0 0);
+  --color-card-foreground: oklch(98% 0 0);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-primary: oklch(98% 0 0);
+  --color-primary-foreground: oklch(0% 0 0);
+  --color-secondary: oklch(20% 0 0);
+  --color-secondary-foreground: oklch(98% 0 0);
+  --color-muted: oklch(15% 0 0);
+  --color-muted-foreground: oklch(60% 0 0);
+  --color-accent: oklch(18% 0 0);
+  --color-accent-foreground: oklch(98% 0 0);
+  --color-destructive: oklch(62% 0.25 29);
+  
+  --font-sans: var(--font-inter), "Inter", "Switzer", "Arial", sans-serif;
+  
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--accordion-panel-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--accordion-panel-height); }
+    to { height: 0; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility text-stagger {
+  display: inline-block;
+}
+
+/* Underline slide animation — left→right on hover, right→left on leave */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
