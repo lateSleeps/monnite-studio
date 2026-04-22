@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const categories = [
   {
@@ -61,27 +61,64 @@ const categories = [
   }
 ];
 
-export default function Portfolio() {
-  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0 });
+function ProjectRow({ projects }: { projects: typeof categories[0]["projects"] }) {
+  const [visible, setVisible] = useState(false);
+  const rowRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setTooltip({ visible: true, x: e.clientX, y: e.clientY });
-  };
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="project" className="py-16 md:py-24 bg-black">
-      {/* Cursor tooltip */}
-      {tooltip.visible && (
+    <div ref={rowRef} className="grid md:grid-cols-2 gap-8 md:gap-4">
+      {projects.map((project, i) => (
         <div
-          className="fixed z-[9999] pointer-events-none"
-          style={{ left: tooltip.x + 16, top: tooltip.y + 16 }}
+          key={project.name}
+          className="group flex flex-col gap-6"
+          style={{
+            transform: visible ? "translateY(0)" : "translateY(40px)",
+            opacity: visible ? 1 : 0,
+            transition: `transform 1.1s cubic-bezier(0.25,1,0.5,1) ${i * 220}ms, opacity 1s ease ${i * 220}ms`,
+          }}
         >
-          <div className="bg-white text-black text-xs font-semibold uppercase tracking-widest px-3 py-2 rounded-[4px] shadow-lg whitespace-nowrap">
-            Project WIP
+          <div
+            className="relative aspect-[4/3] rounded-[4px] overflow-hidden bg-[#1a1a1a] cursor-none"
+          >
+            <img
+              src={project.image}
+              alt={project.name}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <div className="space-y-2">
+            <h5 className="text-xl md:text-[24px] font-semibold font-sans">{project.name}</h5>
+            <p className="text-sm md:text-[16px] text-text-secondary leading-relaxed w-full">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-2 pt-2">
+              {project.tags.map(tag => (
+                <div key={tag} className="px-3 py-1 bg-[#1A1A1A] rounded-[4px] text-[10px] uppercase font-medium tracking-widest text-text-muted border-0">
+                  {tag}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      )}
+      ))}
+    </div>
+  );
+}
 
+export default function Portfolio() {
+  return (
+    <section id="project" className="py-16 md:py-24 bg-black">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-16 space-y-24 md:space-y-40">
         {categories.map((cat) => (
           <div key={cat.number} className="space-y-16">
@@ -97,36 +134,7 @@ export default function Portfolio() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 md:gap-4">
-              {cat.projects.map((project) => (
-                <div key={project.name} className="group flex flex-col gap-6">
-                  <div
-                    className="relative aspect-[4/3] rounded-[4px] overflow-hidden bg-[#1a1a1a] border-0 cursor-none"
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={() => setTooltip(t => ({ ...t, visible: false }))}
-                  >
-                    <img
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <h5 className="text-xl md:text-[24px] font-semibold font-sans">{project.name}</h5>
-                    <p className="text-sm md:text-[16px] text-text-secondary leading-relaxed w-full">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {project.tags.map(tag => (
-                        <div key={tag} className="px-3 py-1 bg-[#1A1A1A] rounded-[4px] text-[10px] uppercase font-medium tracking-widest text-text-muted border-0">
-                          {tag}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ProjectRow projects={cat.projects} />
           </div>
         ))}
       </div>

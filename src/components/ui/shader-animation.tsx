@@ -3,13 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import * as THREE from "three"
 
-// One "cycle" of the shader at time increment 0.05/frame @ ~60fps
-// time goes from 0 to ~(CYCLE_FRAMES * 0.05) per cycle
-// The shader pattern repeats roughly every 100 time units → ~2000 frames @ 60fps ≈ 33s
-// We'll treat a cycle as a fixed wall-clock duration instead
-const CYCLE_MS = 5000   // 5 seconds per cycle
-const TOTAL_CYCLES = 2
-const FADE_MS = 1500
+const TOTAL_MS = 1500  // play for 1.5 seconds (≈1 visual cycle)
+const FADE_MS = 800
 
 export function ShaderAnimation() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -17,12 +12,11 @@ export function ShaderAnimation() {
 
   useEffect(() => {
     if (!containerRef.current) return
-
     const container = containerRef.current
 
     const vertexShader = `
       void main() {
-        gl_Position = vec4( position, 1.0 );
+        gl_Position = vec4(position, 1.0);
       }
     `
 
@@ -36,17 +30,17 @@ export function ShaderAnimation() {
 
       void main(void) {
         vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
-        float t = time*0.05;
+        float t = time * 0.05;
         float lineWidth = 0.002;
 
         vec3 color = vec3(0.0);
         for(int j = 0; j < 3; j++){
-          for(int i=0; i < 5; i++){
-            color[j] += lineWidth*float(i*i) / abs(fract(t - 0.01*float(j)+float(i)*0.01)*5.0 - length(uv) + mod(uv.x+uv.y, 0.2));
+          for(int i = 0; i < 5; i++){
+            color[j] += lineWidth * float(i * i) / abs(fract(t - 0.01 * float(j) + float(i) * 0.01) * 5.0 - length(uv) + mod(uv.x + uv.y, 0.2));
           }
         }
 
-        gl_FragColor = vec4(color[0],color[1],color[2],1.0);
+        gl_FragColor = vec4(color[0], color[1], color[2], 1.0);
       }
     `
 
@@ -76,52 +70,47 @@ export function ShaderAnimation() {
     renderer.setClearColor(0x000000, 0)
     container.appendChild(renderer.domElement)
 
-    const onWindowResize = () => {
-      const width = container.clientWidth
-      const height = container.clientHeight
-      renderer.setSize(width, height)
-      uniforms.resolution.value.x = renderer.domElement.width
-      uniforms.resolution.value.y = renderer.domElement.height
+    const resize = () => {
+      const w = container.clientWidth
+      const h = container.clientHeight
+      renderer.setSize(w, h)
+      uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height)
     }
 
-    onWindowResize()
-    window.addEventListener("resize", onWindowResize, false)
+    resize()
+    window.addEventListener("resize", resize)
 
-    const totalDuration = CYCLE_MS * TOTAL_CYCLES
+    const totalDuration = TOTAL_MS
     const startTime = performance.now()
-    let animationId: number
+    let animId: number
     let done = false
 
     const animate = () => {
       if (done) return
-      animationId = requestAnimationFrame(animate)
-
-      const elapsed = performance.now() - startTime
+      animId = requestAnimationFrame(animate)
       uniforms.time.value += 0.05
       renderer.render(scene, camera)
 
+      const elapsed = performance.now() - startTime
       if (elapsed >= totalDuration) {
-        const fadeProgress = Math.min((elapsed - totalDuration) / FADE_MS, 1)
-        container.style.opacity = String(1 - fadeProgress)
-        if (fadeProgress >= 1) {
+        const progress = Math.min((elapsed - totalDuration) / FADE_MS, 1)
+        if (containerRef.current) containerRef.current.style.opacity = String(1 - progress)
+        if (progress >= 1) {
           done = true
-          cancelAnimationFrame(animationId)
           setHidden(true)
         }
       }
     }
 
-    animationId = requestAnimationFrame(animate)
+    animId = requestAnimationFrame(animate)
 
     return () => {
-      window.removeEventListener("resize", onWindowResize)
-      cancelAnimationFrame(animationId)
+      window.removeEventListener("resize", resize)
+      cancelAnimationFrame(animId)
       renderer.dispose()
       geometry.dispose()
       material.dispose()
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement)
-      }
+      if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement)
     }
   }, [])
 
@@ -131,7 +120,6 @@ export function ShaderAnimation() {
     <div
       ref={containerRef}
       className="absolute inset-0 z-[5] pointer-events-none mix-blend-screen"
-      style={{ opacity: 1 }}
     />
   )
 }

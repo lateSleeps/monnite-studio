@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 
 const socialValues = [
   {
@@ -25,9 +26,16 @@ const socialValues = [
   },
 ];
 
-function Card({ item }: { item: typeof socialValues[0] }) {
+function Card({ item, index, visible }: { item: typeof socialValues[0]; index: number; visible: boolean }) {
   return (
-    <div className="card-hover relative bg-[#1A1A1A] rounded-[4px] p-8 h-full flex flex-col justify-between overflow-hidden cursor-default">
+    <div
+      className="card-hover relative bg-[#1A1A1A] rounded-[4px] p-8 h-full flex flex-col justify-between overflow-hidden cursor-default"
+      style={{
+        transform: visible ? "translateY(0)" : "translateY(40px)",
+        opacity: visible ? 1 : 0,
+        transition: `transform 1.1s cubic-bezier(0.25,1,0.5,1) ${index * 220}ms, opacity 1s ease ${index * 220}ms`,
+      }}
+    >
       <div className="card-overlay absolute inset-0 bg-white pointer-events-none" />
 
       <div className="relative z-10 flex flex-col justify-between h-full" style={{ gap: "8rem" }}>
@@ -51,6 +59,20 @@ function Card({ item }: { item: typeof socialValues[0] }) {
 }
 
 export default function SocialSection() {
+  const [visible, setVisible] = useState(false);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="py-16 md:py-24 bg-black relative z-20">
       <style>{`
@@ -89,9 +111,9 @@ export default function SocialSection() {
           Expertly crafted projects built with design excellence
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {socialValues.map((item, i) => (
-            <Card key={i} item={item} />
+            <Card key={i} item={item} index={i} visible={visible} />
           ))}
         </div>
       </div>

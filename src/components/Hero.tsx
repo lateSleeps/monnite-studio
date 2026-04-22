@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeroShader from "./HeroShader";
 import { ShaderAnimation } from "@/components/ui/shader-animation";
 import { Button } from "@/components/ui/button";
 import { TextScramble } from "@/components/ui/text-scramble";
-import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const valueBrands = [
   { name: "Unlimited request", icon: "https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1a7a1e2705d8ee68c6f72_Unlimited%20request.svg" },
@@ -16,19 +16,27 @@ const valueBrands = [
 export default function Hero() {
   const [bookTrigger, setBookTrigger] = useState(false);
   const [waTrigger, setWaTrigger] = useState(false);
+  const [brandsVisible, setBrandsVisible] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setBrandsVisible(true), 300);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <section className="relative h-screen flex flex-col bg-black overflow-hidden">
       <HeroShader />
-      <ShaderAnimation />
       
       {/* Background Image Overlay like legacy */}
-      <div 
+      <div
         className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ 
+        style={{
           backgroundImage: 'url("https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1ac3cc26268b88480d698_BG.webp")'
         }}
       />
+
+      {/* Shader effect above bg, below text */}
+      <ShaderAnimation />
 
       {/* Overlay to improve text readability */}
       {/* Removed overlay to match Image 4 where left side of earth provides natural contrast */}
@@ -58,9 +66,12 @@ export default function Hero() {
                 className="w-full sm:w-auto rounded-[4px] bg-[#343434] text-white hover:bg-[#343434]/90 text-[16px] px-[24px] py-[12px] h-auto font-medium border-0 flex items-center justify-center gap-3 cursor-pointer"
                 onMouseEnter={() => setWaTrigger(true)}
               >
-                <div className="relative w-7 h-7 rounded-full shrink-0 cursor-pointer">
-                  <Image src="https://i.pravatar.cc/150?img=11" alt="Avatar" fill className="object-cover rounded-full" />
-                  <div className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-green-500 border border-[#343434]" />
+                <div className="relative shrink-0">
+                  <Avatar className="w-7 h-7">
+                    <AvatarImage src="/avatar.jpeg" alt="Monnite" />
+                    <AvatarFallback>M</AvatarFallback>
+                  </Avatar>
+                  <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border-2 border-[#343434]" />
                 </div>
                 <TextScramble as="span" trigger={waTrigger} onScrambleComplete={() => setWaTrigger(false)} speed={0.03} duration={0.5}>
                   Message via WhatsApp
@@ -71,10 +82,18 @@ export default function Hero() {
         </div>
 
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-20 mt-auto">
-          {valueBrands.map((item) => (
-            <div key={item.name} className="flex items-center gap-3 border-b border-white/20 pb-4">
+          {valueBrands.map((item, i) => (
+            <div
+              key={item.name}
+              className="flex items-center gap-3 border-b border-white/20 pb-4"
+              style={{
+                transform: brandsVisible ? "translateY(0)" : "translateY(40px)",
+                opacity: brandsVisible ? 1 : 0,
+                transition: `transform 1.1s cubic-bezier(0.25,1,0.5,1) ${i * 220}ms, opacity 1s ease ${i * 220}ms`,
+              }}
+            >
               <div className="shrink-0 w-6 h-6 relative opacity-70">
-                <Image src={item.icon} alt={item.name} fill className="object-contain" />
+                <img src={item.icon} alt={item.name} className="w-full h-full object-contain" />
               </div>
               <span className="text-[1.25rem] lg:text-[14px] font-medium tracking-wide text-[#8a8a8a] capitalize">
                 {item.name}
