@@ -63,6 +63,7 @@ const categories = [
 
 function ProjectRow({ projects }: { projects: typeof categories[0]["projects"] }) {
   const [visible, setVisible] = useState(false);
+  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0 });
   const rowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,6 +78,14 @@ function ProjectRow({ projects }: { projects: typeof categories[0]["projects"] }
   }, []);
 
   return (
+    <>
+      {tooltip.visible && (
+        <div className="fixed z-[9999] pointer-events-none" style={{ left: tooltip.x + 16, top: tooltip.y + 16 }}>
+          <div className="bg-white text-black text-xs font-semibold uppercase tracking-widest px-3 py-2 rounded-[4px] shadow-lg whitespace-nowrap">
+            Project WIP
+          </div>
+        </div>
+      )}
     <div ref={rowRef} className="grid md:grid-cols-2 gap-8 md:gap-4">
       {projects.map((project, i) => (
         <div
@@ -90,6 +99,8 @@ function ProjectRow({ projects }: { projects: typeof categories[0]["projects"] }
         >
           <div
             className="relative aspect-[4/3] rounded-[4px] overflow-hidden bg-[#1a1a1a] cursor-none"
+            onMouseMove={(e) => setTooltip({ visible: true, x: e.clientX, y: e.clientY })}
+            onMouseLeave={() => setTooltip(t => ({ ...t, visible: false }))}
           >
             <img
               src={project.image}
@@ -113,6 +124,7 @@ function ProjectRow({ projects }: { projects: typeof categories[0]["projects"] }
         </div>
       ))}
     </div>
+    </>
   );
 }
 

@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import HeroShader from "./HeroShader";
-import { ShaderAnimation } from "@/components/ui/shader-animation";
 import { Button } from "@/components/ui/button";
 import { TextScramble } from "@/components/ui/text-scramble";
+import { TextGlitch } from "@/components/ui/text-glitch-effect";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const valueBrands = [
@@ -16,10 +16,10 @@ const valueBrands = [
 export default function Hero() {
   const [bookTrigger, setBookTrigger] = useState(false);
   const [waTrigger, setWaTrigger] = useState(false);
-  const [brandsVisible, setBrandsVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setBrandsVisible(true), 300);
+    const t = setTimeout(() => setVisible(true), 100);
     return () => clearTimeout(t);
   }, []);
 
@@ -35,21 +35,49 @@ export default function Hero() {
         }}
       />
 
-      {/* Shader effect above bg, below text */}
-      <ShaderAnimation />
 
       {/* Overlay to improve text readability */}
       {/* Removed overlay to match Image 4 where left side of earth provides natural contrast */}
 
       <div className="relative z-10 w-full px-6 md:px-8 lg:px-16 max-w-[1440px] mx-auto flex-grow flex flex-col pt-[calc(5rem+2rem)] md:pt-[calc(5rem+4rem)] pb-8">
         <div className="max-w-4xl space-y-8">
-          <h1 className="text-[2.625rem] md:text-[64px] font-semibold leading-[1.1] tracking-tight font-sans text-left">
-            We build products that<br className="hidden md:block"/>grow as you do.
+          <h1
+            className="text-[2.625rem] md:text-[64px] font-semibold leading-[1.1] tracking-tight font-sans text-left"
+            style={{
+              transform: visible ? "translateY(0)" : "translateY(40px)",
+              opacity: visible ? 1 : 0,
+              transition: "transform 1.1s cubic-bezier(0.25,1,0.5,1) 0ms, opacity 1s ease 0ms",
+            }}
+          >
+            We build{" "}
+            <TextGlitch
+              text="digital products"
+              hoverText="digital products"
+              as="span"
+              overlayBg="#ffffff"
+              overlayTextColor="#000000"
+            />
+            <br className="hidden md:block"/>
+            that grow as you do.
           </h1>
-          <p className="text-[1rem] md:text-[20px] text-text-secondary max-w-2xl leading-relaxed">
+          <p
+            className="text-[1rem] md:text-[20px] text-text-secondary max-w-2xl leading-relaxed"
+            style={{
+              transform: visible ? "translateY(0)" : "translateY(40px)",
+              opacity: visible ? 1 : 0,
+              transition: "transform 1.1s cubic-bezier(0.25,1,0.5,1) 150ms, opacity 1s ease 150ms",
+            }}
+          >
             Building digital products that scale with your business,<br className="hidden md:block"/>from first launch to enterprise level.
           </p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
+          <div
+            className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4"
+            style={{
+              transform: visible ? "translateY(0)" : "translateY(40px)",
+              opacity: visible ? 1 : 0,
+              transition: "transform 1.1s cubic-bezier(0.25,1,0.5,1) 300ms, opacity 1s ease 300ms",
+            }}
+          >
             <a href="https://cal.com/monnite-house/secret" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
               <Button
                 className="w-full sm:w-auto rounded-[4px] bg-white text-black hover:bg-white/90 text-[16px] px-[24px] py-[12px] h-auto font-medium border-0 cursor-pointer"
@@ -87,8 +115,8 @@ export default function Hero() {
               key={item.name}
               className="flex items-center gap-3 border-b border-white/20 pb-4"
               style={{
-                transform: brandsVisible ? "translateY(0)" : "translateY(40px)",
-                opacity: brandsVisible ? 1 : 0,
+                transform: visible ? "translateY(0)" : "translateY(40px)",
+                opacity: visible ? 1 : 0,
                 transition: `transform 1.1s cubic-bezier(0.25,1,0.5,1) ${i * 220}ms, opacity 1s ease ${i * 220}ms`,
               }}
             >

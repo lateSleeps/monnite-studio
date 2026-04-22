@@ -2,6 +2,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { AnimatedUnderline } from "@/components/ui/animated-underline";
+import { TextGlitch } from "@/components/ui/text-glitch-effect";
+
+function smoothScrollTo(id: string) {
+  const el = document.querySelector(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 export default function Footer() {
   const [time, setTime] = useState("");
@@ -46,10 +52,10 @@ export default function Footer() {
             <div className="space-y-6">
               <h5 className="text-[#8a8a8a] text-[16px] font-medium font-sans">Navigation</h5>
               <ul className="space-y-4 font-medium text-[16px] font-sans text-white/90">
-                <li><Link href="#project" className="hover:text-white transition-colors"><AnimatedUnderline>Project</AnimatedUnderline></Link></li>
-                <li><Link href="#about" className="hover:text-white transition-colors"><AnimatedUnderline>About</AnimatedUnderline></Link></li>
-                <li><Link href="#services" className="hover:text-white transition-colors"><AnimatedUnderline>Services</AnimatedUnderline></Link></li>
-                <li><Link href="#approach" className="hover:text-white transition-colors"><AnimatedUnderline>Approach</AnimatedUnderline></Link></li>
+                <li><Link href="#project" onClick={(e) => { e.preventDefault(); smoothScrollTo("#project"); }} className="hover:text-white transition-colors"><AnimatedUnderline>Project</AnimatedUnderline></Link></li>
+                <li><Link href="#about" onClick={(e) => { e.preventDefault(); smoothScrollTo("#about"); }} className="hover:text-white transition-colors"><AnimatedUnderline>About</AnimatedUnderline></Link></li>
+                <li><Link href="#services" onClick={(e) => { e.preventDefault(); smoothScrollTo("#services"); }} className="hover:text-white transition-colors"><AnimatedUnderline>Services</AnimatedUnderline></Link></li>
+                <li><Link href="#approach" onClick={(e) => { e.preventDefault(); smoothScrollTo("#approach"); }} className="hover:text-white transition-colors"><AnimatedUnderline>Question</AnimatedUnderline></Link></li>
               </ul>
             </div>
 
@@ -78,9 +84,14 @@ export default function Footer() {
         {/* Brand Bottom */}
         <div className="relative pt-12">
           <div className="flex items-baseline justify-between">
-            <h1 className="text-[clamp(5rem,18vw,20rem)] font-bold tracking-tighter leading-[0.8] -translate-x-[0.05em] select-none text-white">
-              Monnite.
-            </h1>
+            <TextGlitch
+              text="Monnite."
+              hoverText="Monnite."
+              as="h1"
+              overlayBg="#ffffff"
+              overlayTextColor="#000000"
+              className="text-[clamp(5rem,18vw,20rem)] font-bold tracking-tighter leading-[0.8] -translate-x-[0.05em] text-white"
+            />
             <div className="text-[16px] text-white/90 font-medium tracking-wide pb-4 lg:pb-8">
               ©2026 Monnite Studio
             </div>

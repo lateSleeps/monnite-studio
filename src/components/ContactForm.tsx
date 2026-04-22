@@ -34,10 +34,10 @@ export default function ContactForm() {
             'url("https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1d7ccaa8c4fcef7745b03_BG.jpg")',
         }}
       />
-      <div className="absolute inset-0 z-0 bg-black/60 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 z-0 bg-black/10 backdrop-blur-[2px]" />
 
       <div className="relative z-10 w-full px-6 md:px-8 lg:px-16 max-w-2xl mx-auto">
-        <div className="relative bg-card border border-border rounded-[4px] p-8 md:p-12 shadow-2xl">
+        <div className="relative bg-[#141414] border border-border rounded-[4px] p-8 md:p-12 shadow-2xl">
           <PlusIcon className="absolute -top-3 -left-3 h-6 w-6 text-white/40" />
           <PlusIcon className="absolute -top-3 -right-3 h-6 w-6 text-white/40" />
           <PlusIcon className="absolute -bottom-3 -left-3 h-6 w-6 text-white/40" />

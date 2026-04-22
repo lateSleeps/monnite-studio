@@ -9,8 +9,13 @@ const links = [
   { name: "Project", href: "#project" },
   { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
-  { name: "Approach", href: "#approach" },
+  { name: "Question", href: "#approach" },
 ];
+
+function smoothScrollTo(id: string) {
+  const el = document.querySelector(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,6 +48,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
+                onClick={(e) => { e.preventDefault(); smoothScrollTo(link.href); }}
                 className="text-sm font-medium text-white hover:text-white transition-colors py-2 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]"
               >
                 <AnimatedUnderline>{link.name}</AnimatedUnderline>
@@ -89,7 +95,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => { e.preventDefault(); smoothScrollTo(link.href); setMobileOpen(false); }}
               className="text-[1.25rem] font-medium text-white/90 hover:text-white transition-colors"
             >
               {link.name}

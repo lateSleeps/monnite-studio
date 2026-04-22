@@ -83,20 +83,24 @@ export function TextGlitch({
 
   return (
     <Component
-      className={`relative overflow-hidden cursor-pointer select-none ${className}`}
+      className={`relative inline-block cursor-pointer select-none pr-[4px] ${className}`}
+      style={{ verticalAlign: "baseline" }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {text}
       <span
         ref={spanRef}
-        className="absolute inset-0 flex items-center pointer-events-none font-bold transition-all duration-300 ease-out"
+        className="absolute pointer-events-none font-bold flex items-center"
         style={{
+          top: 0, bottom: 0, left: 0,
+          width: "calc(100% + 12px)",
           clipPath: "polygon(0 50%, 100% 50%, 100% 50%, 0 50%)",
+          transition: "clip-path 0.35s ease",
           backgroundColor: overlayBg,
           color: overlayTextColor,
-          paddingLeft: "inherit",
-          paddingRight: "inherit",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
         }}
       >
         {overlayContent}
