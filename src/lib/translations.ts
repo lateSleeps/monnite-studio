@@ -207,33 +207,33 @@ const translations = {
       about: "Tentang",
       services: "Layanan",
       question: "Pertanyaan",
-      cta: "Jadwalkan 15 Menit",
+      cta: "Ngobrol 15 Menit",
       copyright: "Monnite Studio © 2026",
     },
     hero: {
-      heading1: "Kami membangun",
+      heading1: "Kita bangun",
       headingGlitch: "produk digital",
-      heading2: "yang tumbuh bersama kamu.",
+      heading2: "yang ikut tumbuh sama kamu.",
       subheading:
-        "Membangun produk digital yang skalabel bersama bisnismu,\ndari peluncuran pertama hingga skala enterprise.",
-      cta: "Jadwalkan 15 Menit",
-      whatsapp: "Pesan via WhatsApp",
+        "Produk digital yang scale bareng bisnis kamu,\ndari hari pertama launch sampai skala enterprise.",
+      cta: "Ngobrol 15 Menit",
+      whatsapp: "Chat via WhatsApp",
       brands: [
-        "Permintaan tak terbatas",
-        "Pengiriman cepat",
-        "Designer ahli",
-        "Manajemen mudah",
+        "Request tak terbatas",
+        "Delivery cepat",
+        "Designer berpengalaman",
+        "Gampang dikelola",
       ],
     },
     services: {
       heading:
-        "Kebanyakan agensi bisa desain indah tapi tidak pernah rilis, atau rilis cepat tapi terlihat biasa. Kamu butuh keduanya.",
-      subheading: "Kami desain + bangun",
+        "Kebanyakan agency bisa bikin desain bagus tapi nggak pernah rilis, atau rilis cepat tapi tampilannya generik. Kamu butuh keduanya.",
+      subheading: "Kita desain + bangun",
       items: [
         "Sistem perangkat lunak",
-        "Sistem desain",
+        "Design system",
         "Website produk",
-        "Strategi merek",
+        "Brand strategy",
         "E-commerce",
         "Konsultasi",
       ],
@@ -241,138 +241,138 @@ const translations = {
     portfolio: {
       categories: [
         {
-          title: "Desain produk pertama yang berkesan",
+          title: "Bikin produk pertama yang nggak terlupakan",
           description:
-            "Kamu hanya punya satu kesempatan untuk kesan pertama. Produkmu tidak harus sempurna, tapi harus meyakinkan pengguna bahwa produk itu layak untuk digunakan. Kami membantu tim tahap awal melampaui 'minimum viable' dan menciptakan produk pertama yang benar-benar berkesan.",
+            "Kesan pertama cuma ada satu kali. Produkmu nggak harus sempurna, tapi harus bisa bikin orang mau balik lagi. Kita bantu tim early-stage buat nggak cuma sekadar 'minimum viable' — tapi bikin produk yang beneran ninggalin kesan.",
           projects: [
             {
               name: "Corner 32",
               description:
-                "Website merek untuk kafe bertema kesehatan yang menyasar pekerja remote. Dioptimasi SEO untuk meranking 'kafe workspace sehat Bali' dan mendatangkan pengunjung dari digital nomad.",
+                "Website untuk kafe sehat yang nyasar ke remote worker. Dioptimasi SEO biar muncul di pencarian 'kafe workspace sehat Bali' dan narik traffic dari digital nomad.",
             },
             {
               name: "Tenang",
               description:
-                "Website untuk spa premium, studio yoga, dan restoran di Ubud. Dibangun untuk menampilkan tiga layanan berbeda dalam satu merek dengan pengalaman pemesanan terpadu.",
+                "Website untuk spa premium, studio yoga, dan restoran di Ubud. Tiga layanan berbeda, satu merek, satu pengalaman booking yang mulus.",
             },
           ],
         },
         {
-          title: "Wujudkan ulang produk digital ikonik",
+          title: "Revamp produk digital yang udah ikonik",
           description:
-            "Banyak produk digital ikonik yang telah membentuk cara kita hidup dan bekerja. Namun, kebanyakan desain produk berfokus pada yang baru. Kami juga suka meningkatkan yang sudah ada — menjaga apa yang membuatnya istimewa, memikirkan ulang yang rusak secara radikal, dan menambahkan apa yang dibutuhkan untuk sukses di masa depan.",
+            "Banyak produk digital ikonik yang udah ngebentuk cara kita hidup dan kerja. Tapi kebanyakan orang cuma fokus bikin yang baru. Kita juga suka upgrade yang udah ada — jagain apa yang bikin dia spesial, beresin yang rusak, dan nambahin apa yang dibutuhkan buat tetap relevan.",
           projects: [
             {
               name: "Sushi Tei",
               description:
-                "Aplikasi point-of-sale kustom untuk jaringan restoran. Menangani transaksi, pelacakan inventaris real-time, dan pemantauan layanan di berbagai lokasi.",
+                "Aplikasi kasir custom untuk jaringan restoran. Urus transaksi, pantau stok real-time, dan monitor layanan di banyak cabang sekaligus.",
             },
             {
               name: "Fitground",
               description:
-                "Sistem end-to-end yang mengelola langganan anggota, penjadwalan pelatih, pemesanan kelas, dan pengawasan multi-lokasi. Memangkas waktu administrasi hingga 60%.",
+                "Sistem lengkap untuk kelola langganan member, jadwal trainer, booking kelas, dan pantau banyak lokasi. Admin time-nya kepotong 60%.",
             },
           ],
         },
         {
-          title: "Bentuk merek penantang",
+          title: "Bantu merek penantang jadi yang terdepan",
           description:
-            "Kami menyukai para penantang. Perusahaan yang mempertanyakan norma dan menghadapi pesaing yang lebih besar. Mereka yang menyerang bukan bertahan. Kami membantu mereka menemukan positioning yang tepat, membangun narasi yang resonan, dan mendesain identitas yang menonjol. Dengan presisi strategis dan imajinasi kreatif.",
+            "Kita suka sama yang berani nantang. Perusahaan yang berani mempertanyakan norma dan ngambil risiko lawan kompetitor yang lebih besar. Kita bantu mereka nemuin positioning yang pas, bangun cerita yang nyambung, dan desain identitas yang nggak gampang dilupain.",
           projects: [
             {
               name: "Lenka Studio",
               description:
-                "Desain logo untuk agensi desain dan teknologi berbasis Bali yang mengkhususkan diri dalam aplikasi web kustom. Identitas visual dibangun untuk mencerminkan presisi teknis dengan keahlian kreatif.",
+                "Desain logo untuk agency desain dan teknologi di Bali yang spesialis bikin web app custom. Visual identity-nya dibangun buat nyerminkan ketepatan teknis sekaligus sentuhan kreatif.",
             },
             {
               name: "Webstein",
               description:
-                "Identitas visual lengkap untuk agensi digital Australia yang berfokus pada pengembangan WordPress dan pemasaran. Termasuk logo, tipografi, palet warna, dan materi kolateral.",
+                "Visual identity lengkap untuk digital agency asal Australia yang fokus di WordPress dan marketing. Meliputi logo, tipografi, palet warna, dan materi kolateral.",
             },
           ],
         },
       ],
-      tags: ["Strategi", "Desain UI", "Desain UX", "Pengembangan Perangkat Lunak"],
+      tags: ["Strategi", "UI Design", "UX Design", "Software Development"],
       tooltip: "Proyek dalam pengerjaan",
     },
     social: {
-      heading: "Proyek berkualitas tinggi yang dibangun dengan keunggulan desain",
+      heading: "Proyek-proyek yang digarap serius dengan standar desain yang tinggi",
       cards: [
         {
           title: "Proyek Selesai",
           suffix: undefined,
           description:
-            "Dari landing page sederhana hingga platform SaaS kompleks untuk UMKM, startup, & agensi.",
+            "Dari landing page simpel sampai platform SaaS yang kompleks — buat UMKM, startup, dan agency.",
         },
         {
           title: "Rata-rata Pengerjaan",
           suffix: "Minggu",
           description:
-            "Kami bekerja dalam sprint terstruktur agar kamu melihat kemajuan nyata setiap minggu, bukan hanya di akhir.",
+            "Kita kerja dalam sprint yang terstruktur, jadi kamu bisa lihat progress nyata tiap minggu — bukan cuma di akhir.",
         },
         {
-          title: "Respons Dukungan",
+          title: "Respons Support",
           suffix: "Jam",
           description:
-            "Pertanyaan dijawab, bug diperbaiki, perubahan mendesak langsung diterapkan. Kami selalu siap dan di zona waktu yang sama.",
+            "Pertanyaan langsung dijawab, bug langsung dibenerin, perubahan urgent langsung dieksekusi. Kita siap dan ada di timezone yang sama.",
         },
         {
           title: "Tepat Waktu",
           suffix: undefined,
           description:
-            "Setiap proyek diselesaikan sesuai jadwal. Kami merencanakan dengan cermat dan berkomunikasi proaktif agar tidak ada yang terlewat.",
+            "Semua proyek selesai sesuai jadwal. Kita plan dengan matang dan selalu update progress, biar nggak ada yang kelewat.",
         },
       ],
     },
     about: {
-      heading: "Kemitraan yang kolaboratif.",
+      heading: "Kolaborasi yang beneran kerja.",
       body1:
-        "Kebanyakan agensi bisa desain indah tapi tidak pernah rilis, atau rilis cepat tapi terlihat biasa. Kami membangun Monnite karena lelah harus memilih antara keduanya. Produk hebat butuh keduanya: keahlian dan kecepatan.",
+        "Kebanyakan agency bisa bikin desain yang indah tapi nggak pernah launch, atau launch cepat tapi tampilannya generik. Kita bangun Monnite karena udah capek harus milih salah satu. Produk yang bagus butuh keduanya — keahlian dan kecepatan.",
       body2:
-        "Proses kami sederhana: minggu pertama memahami masalah, bukan menjual solusi. Membangun dalam sprint mingguan agar kamu melihat kemajuan secara langsung. Rilis dengan 30 hari dukungan karena di situlah kamu belajar apa yang benar-benar berhasil. Tidak ada timeline misterius, tidak ada menghilang setelah selesai — hanya fase yang jelas dan eksekusi berkualitas.",
+        "Prosesnya simpel: minggu pertama kita pahami dulu masalahnya, bukan langsung jualan solusi. Kita bangun dalam sprint mingguan biar kamu bisa lihat progress secara real time. Launch dengan 30 hari support, karena di situlah hal-hal yang beneran penting mulai keliatan. Nggak ada timeline yang misterius, nggak ada menghilang setelah selesai — cuma fase yang jelas dan eksekusi yang beneran.",
     },
     qna: {
-      heading: "Pertanyaan yang sering kami terima.",
+      heading: "Yang sering orang tanyain ke kita.",
       subheading:
-        "Semua yang perlu kamu ketahui tentang bermitra dengan Monnite Studio.",
+        "Semua yang perlu kamu tau sebelum mulai kerja sama Monnite Studio.",
       faqs: [
         {
-          question: "Berapa biaya sebuah proyek?",
+          question: "Berapa harga sebuah proyek?",
           answer:
-            "Tergantung lingkup dan kompleksitasnya. Kami menggunakan paket harga tetap, bukan tarif per jam. Jadwalkan panggilan 15 menit dan kami akan memberikan penawaran tepat berdasarkan kebutuhanmu.",
+            "Tergantung scope dan kompleksitasnya. Kita pakai paket harga tetap, bukan tarif per jam. Book call 15 menit dan kita kasih penawaran yang pas buat kebutuhanmu.",
         },
         {
-          question: "Berapa lama pengerjaannya?",
+          question: "Berapa lama prosesnya?",
           answer:
-            "Sebagian besar proyek selesai dalam 4-8 minggu. Website merek 4-6 minggu, e-commerce 6-8 minggu, produk kustom 8-12 minggu. Timeline dikonfirmasi saat kickoff.",
+            "Kebanyakan proyek selesai dalam 4-8 minggu. Website brand 4-6 minggu, e-commerce 6-8 minggu, produk custom 8-12 minggu. Timeline dikonfirmasi pas kickoff.",
         },
         {
-          question: "Bagaimana proses kerjanya?",
+          question: "Proses kerjanya gimana?",
           answer:
-            "Kami mulai dengan discovery call, lalu membangun dalam sprint mingguan agar kamu tidak pernah bertanya-tanya. Setelah rilis, kami tetap ada selama 30 hari untuk memastikan semuanya berjalan lancar.",
+            "Kita mulai dengan discovery call, terus bangun dalam sprint mingguan biar kamu nggak pernah bingung progress-nya sampai mana. Setelah launch, kita tetap standby 30 hari buat mastiin semuanya berjalan lancar.",
         },
         {
-          question: "Bagaimana jika lingkup berubah di tengah jalan?",
+          question: "Kalau scope-nya berubah di tengah jalan gimana?",
           answer:
-            "Kami mengevaluasi ulang dan menyesuaikan harga jika perlu. Perubahan kecil sudah termasuk. Perubahan lingkup besar memerlukan amandemen singkat pada timeline dan anggaran. Kami akan selalu memberitahumu sebelum melanjutkan.",
+            "Kita evaluasi ulang dan sesuaikan harga kalau perlu. Perubahan kecil udah include. Kalau scope-nya berubah besar, kita bicarain dulu sebelum lanjut — nggak ada surprise.",
         },
         {
-          question: "Apakah ada pemeliharaan setelah proyek selesai?",
+          question: "Ada maintenance setelah proyek selesai?",
           answer:
-            "Semua proyek sudah termasuk 30 hari dukungan pasca-rilis. Setelahnya, kamu bisa memilih retainer bulanan atau bayar per permintaan. Tidak ada ketergantungan vendor — kamu memiliki kodenya.",
+            "Semua proyek udah include 30 hari support pasca-launch. Setelahnya, kamu bisa pilih retainer bulanan atau bayar per request. Nggak ada vendor lock-in — kodenya milik kamu.",
         },
       ],
     },
     contact: {
-      heading: "Mari mulai percakapan",
+      heading: "Yuk, kita ngobrol dulu",
       subheading:
-        "Ceritakan tentang proyek atau idemu. Kami membantu perusahaan mengeksplorasi peluang produk dan membangun produk digital yang benar-benar diinginkan orang.",
-      namePlaceholder: "Namamu",
+        "Ceritain project atau ide kamu. Kita bantu explore peluang produk dan bangun yang beneran dibutuhin orang.",
+      namePlaceholder: "Nama kamu",
       nameLabel: "Nama",
       emailLabel: "Email",
       emailPlaceholder: "email@kamu.com",
       messageLabel: "Pesan",
-      messagePlaceholder: "Ceritakan tentang proyekmu...",
+      messagePlaceholder: "Ceritain tentang project kamu...",
       cta: "Kirim Pesan",
     },
     footer: {
@@ -392,10 +392,10 @@ const translations = {
       },
       comingSoon: "(Segera Hadir)",
       blog: "Blog",
-      creativeSpace: "Ruang Kreatif",
+      creativeSpace: "Creative Space",
       studioName: "Monnite Studio",
       studioDesc:
-        "Kami membantu perusahaan mengeksplorasi peluang produk, membangun produk dari nol, atau membawanya ke level berikutnya.",
+        "Kita bantu perusahaan explore peluang produk, bangun dari nol, atau bawa ke level berikutnya.",
       location: "Tabanan, Bali, Indonesia.",
       copyright: "©2026 Monnite Studio",
     },
