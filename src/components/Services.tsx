@@ -6,6 +6,7 @@ import { useLanguage } from "@/lib/language-context";
 export default function Services() {
   const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
+  const [hovered, setHovered] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,11 +46,25 @@ export default function Services() {
             }}
           >
             <div>
-              <h4 className="text-[1.5rem] md:text-[2rem] text-text-secondary mb-6 font-semibold font-sans text-left">{t.services.subheading}</h4>
+              <h4 className="text-[1.5rem] md:text-[2rem] text-text-secondary mb-6 font-semibold font-sans text-left">
+                {t.services.subheading}
+              </h4>
               <div className="space-y-8">
-                {t.services.items.map((service) => (
-                  <div key={service} className="flex items-center gap-4">
-                    <div className="w-[2.625rem] h-[2.625rem] rounded-full border-[0.375rem] border-white bg-transparent shrink-0" />
+                {t.services.items.map((service, i) => (
+                  <div
+                    key={service}
+                    className="flex items-center gap-4 cursor-default"
+                    onMouseEnter={() => setHovered(i)}
+                    onMouseLeave={() => setHovered(null)}
+                  >
+                    {/* Radio button — fills on hover, synced with text glitch */}
+                    <div className={`relative w-[2.625rem] h-[2.625rem] rounded-full border-[0.375rem] border-white shrink-0 transition-colors duration-300 ${
+                      hovered === i ? "bg-white" : "bg-transparent"
+                    }`}>
+                      <div className={`absolute inset-0 rounded-full bg-black transition-transform duration-300 ${
+                        hovered === i ? "scale-[0.42]" : "scale-0"
+                      }`} />
+                    </div>
                     <TextGlitch
                       text={service}
                       hoverText={service}
