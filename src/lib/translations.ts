@@ -29,7 +29,7 @@ const translations = {
       heading:
         "Most agencies either design beautifully but never ship, or ship fast but look generic. You need both.",
       subheading: "We design + build",
-      selectService: "Select Service",
+      selectService: "Start Consultation",
       items: [
         "Software systems",
         "Design system",
@@ -230,7 +230,7 @@ const translations = {
       heading:
         "Kebanyakan agency bisa bikin desain bagus tapi nggak pernah rilis, atau rilis cepat tapi tampilannya generik. Kamu butuh keduanya.",
       subheading: "Kita desain + bangun",
-      selectService: "Pilih Layanan",
+      selectService: "Mulai Konsultasi",
       items: [
         "Sistem perangkat lunak",
         "Design system",
