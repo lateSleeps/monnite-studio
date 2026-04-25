@@ -183,6 +183,7 @@ const translations = {
         email: "Email",
         linkedin: "LinkedIn",
         threads: "Threads",
+        instagram: "Instagram",
         facebook: "Facebook",
       },
       nav: {
@@ -384,6 +385,7 @@ const translations = {
         email: "Email",
         linkedin: "LinkedIn",
         threads: "Threads",
+        instagram: "Instagram",
         facebook: "Facebook",
       },
       nav: {

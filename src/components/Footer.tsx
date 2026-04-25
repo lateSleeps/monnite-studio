@@ -44,7 +44,8 @@ export default function Footer() {
               <ul className="space-y-4 font-medium text-[16px] font-sans text-white/90">
                 <li><Link href="#" className="hover:text-white transition-colors"><AnimatedUnderline>{t.footer.links.email}</AnimatedUnderline></Link></li>
                 <li><Link href="#" className="hover:text-white transition-colors"><AnimatedUnderline>{t.footer.links.linkedin}</AnimatedUnderline></Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors"><AnimatedUnderline>{t.footer.links.threads}</AnimatedUnderline></Link></li>
+                <li><Link href="https://www.threads.com/@monnite_h?hl=id" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><AnimatedUnderline>{t.footer.links.threads}</AnimatedUnderline></Link></li>
+                <li><Link href="https://www.instagram.com/monnite_h/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><AnimatedUnderline>{t.footer.links.instagram}</AnimatedUnderline></Link></li>
                 <li><Link href="#" className="hover:text-white transition-colors"><AnimatedUnderline>{t.footer.links.facebook}</AnimatedUnderline></Link></li>
               </ul>
             </div>
