@@ -43,7 +43,7 @@ function ProjectRow({ catIndex, visible }: { catIndex: number; visible: boolean 
             >
               <Image
                 src={projectImages[catIndex][i]}
-                alt={project.name}
+                alt={`${project.name} — Monnite Studio, jasa pembuatan website & design agency Bali Tabanan`}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
