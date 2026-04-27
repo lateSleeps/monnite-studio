@@ -36,7 +36,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-black pt-16 pb-8 overflow-hidden">
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-16 space-y-16">
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-16 space-y-16">
         <div className="flex flex-wrap md:flex-nowrap justify-between gap-10 items-start">
           <div className="flex flex-wrap gap-x-[60px] gap-y-8 items-start">
             <div className="space-y-6">

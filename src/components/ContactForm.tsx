@@ -38,7 +38,7 @@ export default function ContactForm() {
       />
       <div className="absolute inset-0 z-0 bg-black/10 backdrop-blur-[2px]" />
 
-      <div className="relative z-10 w-full px-6 md:px-8 lg:px-16 max-w-2xl mx-auto">
+      <div className="relative z-10 w-full px-6 md:px-16 max-w-2xl mx-auto">
         <div className="relative bg-[#141414] border border-border rounded-[4px] p-8 md:p-12 shadow-2xl">
           <PlusIcon className="absolute -top-3 -left-3 h-6 w-6 text-white/40" />
           <PlusIcon className="absolute -top-3 -right-3 h-6 w-6 text-white/40" />

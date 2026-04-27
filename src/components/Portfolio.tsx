@@ -108,7 +108,7 @@ function CategoryBlock({ catIndex }: { catIndex: number }) {
 export default function Portfolio() {
   return (
     <section id="project" className="py-16 md:py-24 bg-black">
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-16 space-y-24 md:space-y-40">
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-16 space-y-24 md:space-y-40">
         {categoryNumbers.map((_, i) => (
           <CategoryBlock key={i} catIndex={i} />
         ))}
