@@ -21,7 +21,7 @@ const translations = {
       brands: [
         "Design + build, one studio",
         "4–8 weeks, brief to launch",
-        "We ask first, then execute",
+        "Outcomes over aesthetics",
         "Partner, not vendor",
       ],
     },
@@ -223,7 +223,7 @@ const translations = {
       brands: [
         "Design + build, satu studio",
         "4–8 minggu, dari brief ke launch",
-        "Kami tanya dulu, baru eksekusi",
+        "Hasil di atas estetika",
         "Partner, bukan vendor",
       ],
     },
