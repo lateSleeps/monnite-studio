@@ -89,7 +89,7 @@ export default function SocialSection() {
       `}</style>
 
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-16" style={{ display: "flex", flexDirection: "column", gap: "110px" }}>
-        <h2 className="text-[2rem] md:text-[52px] font-semibold text-left md:text-center max-w-4xl md:mx-auto leading-[1.2] font-sans">
+        <h2 className="text-[2rem] md:text-[52px] font-semibold text-left lg:text-center max-w-4xl lg:mx-auto leading-[1.2] font-sans">
           {t.social.heading}
         </h2>
 

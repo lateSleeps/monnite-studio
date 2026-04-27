@@ -90,7 +90,7 @@ export default function Footer() {
             overlayTextColor="#000000"
             className="text-[clamp(5rem,18vw,20rem)] font-bold tracking-tighter leading-[0.8] -translate-x-[0.05em] text-white"
           />
-          <div className="flex justify-start md:justify-end mt-2 md:mt-0 md:absolute md:bottom-0 md:right-0 pb-2 md:pb-4 lg:pb-8">
+          <div className="flex justify-start lg:justify-end mt-2 lg:mt-0 lg:absolute lg:bottom-0 lg:right-0 pb-2 lg:pb-8">
             <span className="text-[16px] text-white/90 font-medium tracking-wide">{t.footer.copyright}</span>
           </div>
         </div>
