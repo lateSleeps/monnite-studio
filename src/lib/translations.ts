@@ -19,10 +19,10 @@ const translations = {
       cta: "Book a 15 min Call",
       whatsapp: "Message via WhatsApp",
       brands: [
-        "Unlimited request",
-        "Fast Delivery",
-        "Expert Designer",
-        "Easy Management",
+        "Design + build, one studio",
+        "4–8 weeks, brief to launch",
+        "We ask first, then execute",
+        "Partner, not vendor",
       ],
     },
     services: {
@@ -221,10 +221,10 @@ const translations = {
       cta: "Ngobrol 15 Menit",
       whatsapp: "Chat via WhatsApp",
       brands: [
-        "Request tak terbatas",
-        "Delivery cepat",
-        "Designer berpengalaman",
-        "Gampang dikelola",
+        "Design + build, satu studio",
+        "4–8 minggu, dari brief ke launch",
+        "Kami tanya dulu, baru eksekusi",
+        "Partner, bukan vendor",
       ],
     },
     services: {
