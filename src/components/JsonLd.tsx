@@ -6,10 +6,13 @@ export default function JsonLd() {
         "@type": "Organization",
         "@id": "https://monnitestudio.com/#organization",
         name: "Monnite Studio",
+        alternateName: ["Monnite", "Monnite Studio Bali"],
         url: "https://monnitestudio.com",
         logo: {
           "@type": "ImageObject",
-          url: "https://monnitestudio.com/Logo.svg",
+          url: "https://monnitestudio.com/logo-512.png",
+          width: 512,
+          height: 512,
         },
         description:
           "Monnite Studio — jasa pembuatan website profesional dan design agency di Bali, Tabanan. Spesialis UI/UX, web app, brand strategy, dan e-commerce untuk startup dan bisnis.",
@@ -25,7 +28,8 @@ export default function JsonLd() {
           availableLanguage: ["English", "Indonesian"],
         },
         sameAs: [
-          "https://www.instagram.com/monnitestudio",
+          "https://www.instagram.com/monnite_h/",
+          "https://www.threads.com/@monnite_h",
         ],
         areaServed: ["Bali", "Indonesia", "Australia", "International"],
         knowsAbout: [

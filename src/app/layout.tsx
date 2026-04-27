@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     siteName: "Monnite Studio",
     images: [
       {
-        url: "/portfolio-01.webp",
-        width: 1200,
-        height: 630,
+        url: "/logo-512.png",
+        width: 512,
+        height: 512,
         alt: "Monnite Studio — Jasa Pembuatan Website & Design Agency Bali Tabanan",
       },
     ],
