@@ -9,7 +9,7 @@ export default function QnA() {
   return (
     <section id="approach" className="py-16 md:py-24 bg-black">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-16">
-        <div className="grid md:grid-cols-2 gap-16 lg:gap-32 items-start">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-start">
           <div className="space-y-6">
             <h2 className="text-[2rem] md:text-[52px] font-semibold leading-[1.2] font-sans text-left">
               {t.qna.heading}

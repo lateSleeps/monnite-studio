@@ -96,7 +96,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             <div className="flex items-center gap-8">
               {links.map((link) => (
                 <Link
@@ -125,7 +125,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile */}
-          <div className="md:hidden flex items-center gap-4 relative z-[9999]">
+          <div className="lg:hidden flex items-center gap-4 relative z-[9999]">
             <LangDropdown />
             <button
               className="flex items-center gap-2 cursor-pointer"
@@ -147,7 +147,7 @@ export default function Navbar() {
 
       {/* Fullscreen Mobile Menu */}
       <div
-        className="md:hidden fixed inset-0 bg-black z-[9998] flex flex-col px-6 pt-28 pb-12 pointer-events-none"
+        className="lg:hidden fixed inset-0 bg-black z-[9998] flex flex-col px-6 pt-28 pb-12 pointer-events-none"
         style={{
           clipPath: mobileOpen
             ? animateIn ? "inset(0% 0% 0% 0%)" : "inset(0% 0% 100% 0%)"

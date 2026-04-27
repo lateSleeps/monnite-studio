@@ -25,7 +25,7 @@ function ProjectRow({ catIndex, visible }: { catIndex: number; visible: boolean 
           </div>
         </div>
       )}
-      <div className="grid md:grid-cols-2 gap-8 md:gap-4">
+      <div className="grid lg:grid-cols-2 gap-8 lg:gap-4">
         {cat.projects.map((project, i) => (
           <div
             key={project.name}

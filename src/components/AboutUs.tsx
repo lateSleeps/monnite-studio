@@ -21,7 +21,7 @@ export default function AboutUs() {
   return (
     <section id="about" className="py-16 md:py-24 bg-black">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-8 lg:px-16">
-        <div className="grid md:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-center">
           <div className="w-full aspect-[3/4] rounded-[4px] overflow-hidden">
             <video
               src="/Video monnite.mp4"
