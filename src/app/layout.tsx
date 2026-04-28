@@ -45,12 +45,20 @@ export const metadata: Metadata = {
     title: "Monnite Studio | Jasa Pembuatan Website & Design Agency Bali",
     description: "Monnite Studio — jasa pembuatan website profesional di Bali & Tabanan. Design agency untuk startup, brand, dan bisnis lokal maupun internasional.",
     siteName: "Monnite Studio",
+    images: [
+      {
+        url: "https://monnitestudio.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Monnite Studio — Jasa Pembuatan Website & Design Agency Bali",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Monnite Studio | Jasa Pembuatan Website & Design Agency Bali",
     description: "Monnite Studio — jasa pembuatan website profesional di Bali & Tabanan. Design agency untuk startup, brand, dan bisnis.",
-    images: ["/opengraph-image"],
+    images: ["https://monnitestudio.com/og-image.jpg"],
   },
   icons: {
     icon: "/favicon.svg",
