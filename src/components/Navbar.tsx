@@ -91,7 +91,7 @@ export default function Navbar() {
         isScrolled || mobileOpen ? "bg-black" : "bg-transparent"
       }`}>
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-16 h-20 flex items-center justify-between">
-          <Link href="/" className="shrink-0 text-white font-semibold text-[20px] tracking-tight relative z-[9999]">
+          <Link href="/" className="shrink-0 text-white font-semibold text-[20px] md:text-[24px] lg:text-[20px] tracking-tight relative z-[9999]">
             Monnite Studio
           </Link>
 
