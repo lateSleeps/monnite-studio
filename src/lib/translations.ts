@@ -12,11 +12,11 @@ const translations = {
     },
     // MONNITE-SEO: Hero section — problem-aware headline, no-handoff positioning
     hero: {
-      heading1: "We design and build",
+      heading1: "We build",
       headingGlitch: "digital products",
-      heading2: "without the handoffs.",
+      heading2: "that grow as you do.",
       subheading:
-        "Brand, product, website, system — one studio from brief to launch.\nBuilt for businesses in Bali and beyond that are ready to move.",
+        "Building digital products that scale with your business,\nfrom first launch to enterprise level.",
       cta: "Book a 15 min Call",
       whatsapp: "Message via WhatsApp",
       brands: [
@@ -245,11 +245,11 @@ const translations = {
     },
     // MONNITE-SEO: Hero section ID
     hero: {
-      heading1: "Kita desain dan bangun",
+      heading1: "Kita bangun",
       headingGlitch: "produk digital",
-      heading2: "tanpa handoff.",
+      heading2: "yang ikut tumbuh sama kamu.",
       subheading:
-        "Brand, produk, website, sistem — satu studio dari brief sampai launch.\nBuat bisnis di Bali dan sekitarnya yang udah siap bergerak.",
+        "Produk digital yang scale bareng bisnis kamu,\ndari hari pertama launch sampai skala enterprise.",
       cta: "Ngobrol 15 Menit",
       whatsapp: "Chat via WhatsApp",
       brands: [
