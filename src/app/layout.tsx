@@ -78,9 +78,9 @@ export const metadata: Metadata = {
     images: ["https://monnitestudio.com/og-image.jpg"],
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/logo-new.png",
+    shortcut: "/logo-new.png",
+    apple: "/logo-new.png",
   },
   robots: {
     index: true,
