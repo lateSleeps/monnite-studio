@@ -12,8 +12,8 @@ const inter = Inter({
 
 // MONNITE-SEO: Homepage meta — primary keyword + brand, max 60-char title, 160-char description
 export const metadata: Metadata = {
-  title: "Monnite Studio — UI/UX & Web Design Agency Bali",
-  description: "End-to-end design and development studio in Tabanan, Bali. We build websites, apps, and systems — one team, no handoffs. Fixed-price, 4–8 weeks.",
+  title: "Monnite Studio — Design & Technology Studio, Bali",
+  description: "Monnite Studio adalah design dan technology studio di Bali. Kami bantu founders dan bisnis bangun produk digital end-to-end — brand, product, website, sistem. No handoffs.",
   keywords: [
     // Brand & Local
     "Monnite Studio",
@@ -59,22 +59,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://monnitestudio.com",
-    title: "Monnite Studio — UI/UX & Web Design Agency Bali",
-    description: "End-to-end design and development studio in Tabanan, Bali. We build websites, apps, and systems — one team, no handoffs.",
+    title: "Monnite Studio — Design & Technology Studio, Bali",
+    description: "Monnite Studio adalah design dan technology studio di Bali. Kami bantu founders dan bisnis bangun produk digital end-to-end — brand, product, website, sistem. No handoffs.",
     siteName: "Monnite Studio",
     images: [
       {
         url: "https://monnitestudio.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Monnite Studio — UI/UX & Web Design Agency Bali",
+        alt: "Monnite Studio — Design & Technology Studio, Bali",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Monnite Studio — UI/UX & Web Design Agency Bali",
-    description: "End-to-end design and development studio in Tabanan, Bali. One team, no handoffs, fixed-price.",
+    title: "Monnite Studio — Design & Technology Studio, Bali",
+    description: "Monnite Studio adalah design dan technology studio di Bali. Kami bantu founders dan bisnis bangun produk digital end-to-end — brand, product, website, sistem. No handoffs.",
     images: ["https://monnitestudio.com/og-image.jpg"],
   },
   icons: {
