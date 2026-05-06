@@ -136,13 +136,12 @@ const translations = {
         },
       ],
     },
-    // MONNITE-SEO: About section — why-first, ends with who it's for
     about: {
-      heading: "We ask why before we build anything.",
+      heading: "A collaborative partnership.",
       body1:
-        "Most growing businesses don't have a design problem. They have a clarity problem — they know what to build, but not why it isn't working yet. We start there. Before wireframes, before code, before timelines. Monnite is a design and technology studio in Tabanan, Bali. We work end-to-end — brand, product, website, and systems — from one team, so nothing gets lost between design and development.",
+        "Most agencies either design beautifully but never launch, or ship fast but look generic. We built Monnite because we were tired of choosing between the two. Great products need both craft and speed.",
       body2:
-        "The process is direct: week one is for understanding the problem, not pitching solutions. We build in weekly sprints so you see progress in real time. After launch, we stay for 30 days — because that's when you find out what actually works. Built for F&B owners, clinics, retailers, and local startups that are growing but need their digital side to catch up.",
+        "Our process is simple: spend week one understanding the problem, not pitching solutions. Build in weekly sprints so you see progress in real time. Launch with 30 days of support because that's when you learn what actually works. No mystery timelines, no disappearing after handoff, just clear phases and quality execution.",
     },
     qna: {
       heading: "Things people usually ask us.",
@@ -369,13 +368,12 @@ const translations = {
         },
       ],
     },
-    // MONNITE-SEO: About section ID — why-first
     about: {
-      heading: "Kita tanya kenapa dulu sebelum mulai bangun.",
+      heading: "Kolaborasi yang beneran kerja.",
       body1:
-        "Kebanyakan bisnis yang berkembang bukan punya masalah desain. Mereka punya masalah kejelasan — tahu apa yang mau dibangun, tapi belum tahu kenapa yang ada sekarang nggak berhasil. Kita mulai dari sana. Sebelum wireframe, sebelum kode, sebelum timeline. Monnite adalah studio desain dan teknologi di Tabanan, Bali — yang kerja end-to-end, satu tim, dari brand sampai sistem.",
+        "Kebanyakan agency bisa bikin desain yang indah tapi nggak pernah launch, atau launch cepat tapi tampilannya generik. Kita bangun Monnite karena udah capek harus milih salah satu. Produk yang bagus butuh keduanya — keahlian dan kecepatan.",
       body2:
-        "Prosesnya langsung: minggu pertama untuk memahami masalah, bukan jualan solusi. Kita bangun dalam sprint mingguan biar kamu bisa lihat progress secara real time. Setelah launch, kita tetap ada 30 hari — karena di situlah hal yang beneran penting mulai keliatan. Cocok buat pemilik F&B, klinik, retail, dan startup lokal yang bisnisnya udah tumbuh, tapi sisi digitalnya perlu mengejar.",
+        "Prosesnya simpel: minggu pertama kita pahami dulu masalahnya, bukan langsung jualan solusi. Kita bangun dalam sprint mingguan biar kamu bisa lihat progress secara real time. Launch dengan 30 hari support, karena di situlah hal-hal yang beneran penting mulai keliatan. Nggak ada timeline yang misterius, nggak ada menghilang setelah selesai — cuma fase yang jelas dan eksekusi yang beneran.",
     },
     qna: {
       heading: "Yang sering orang tanyain ke kita.",
