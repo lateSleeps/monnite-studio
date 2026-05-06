@@ -207,9 +207,8 @@ const translations = {
       blog: "Blog",
       creativeSpace: "Creative Space",
       studioName: "Monnite Studio",
-      // MONNITE-SEO: Footer tagline — end-to-end positioning
       studioDesc:
-        "One studio. Design, build, and ship — end to end.",
+        "We help companies explore product opportunities, build products from scratch or elevate them to new levels.",
       location: "Tabanan, Bali, Indonesia.",
       copyright: "©2026 Monnite Studio",
     },
@@ -439,9 +438,8 @@ const translations = {
       blog: "Blog",
       creativeSpace: "Creative Space",
       studioName: "Monnite Studio",
-      // MONNITE-SEO: Footer tagline ID
       studioDesc:
-        "Satu studio. Desain, bangun, dan ship — dari awal sampai akhir.",
+        "Kita bantu perusahaan explore peluang produk, bangun dari nol, atau bawa ke level berikutnya.",
       location: "Tabanan, Bali, Indonesia.",
       copyright: "©2026 Monnite Studio",
     },
