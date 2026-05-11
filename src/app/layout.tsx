@@ -8,6 +8,8 @@ import JsonLd from "@/components/JsonLd";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 // MONNITE-SEO: Homepage meta — primary keyword + brand, max 60-char title, 160-char description
