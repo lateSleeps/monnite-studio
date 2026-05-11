@@ -8,8 +8,6 @@ import JsonLd from "@/components/JsonLd";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  display: "swap",
-  preload: true,
 });
 
 // MONNITE-SEO: Homepage meta — primary keyword + brand, max 60-char title, 160-char description
@@ -103,7 +101,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-<body className={`${inter.variable} antialiased selection:bg-white selection:text-black`}>
+      <body className={`${inter.variable} antialiased selection:bg-white selection:text-black`}>
         <JsonLd />
         <Providers>
           <SmoothScroll>
