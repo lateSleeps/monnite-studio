@@ -101,7 +101,7 @@ export default function Hero() {
               >
                 <div className="relative shrink-0">
                   <Avatar className="w-7 h-7">
-                    <AvatarImage src="/Profile Monnite.webp" alt="Monnite" />
+                    <AvatarImage src="/profile-monnite.webp" alt="Monnite" />
                     <AvatarFallback>M</AvatarFallback>
                   </Avatar>
                   <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border-2 border-[#343434]" />
