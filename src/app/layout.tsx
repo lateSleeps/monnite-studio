@@ -101,10 +101,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <head>
-        <link rel="preload" as="image" href="/hero-bg-opt.webp" />
-      </head>
-      <body className={`${inter.variable} antialiased selection:bg-white selection:text-black`}>
+<body className={`${inter.variable} antialiased selection:bg-white selection:text-black`}>
         <JsonLd />
         <Providers>
           <SmoothScroll>

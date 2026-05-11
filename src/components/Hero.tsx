@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { TextGlitch } from "@/components/ui/text-glitch-effect";
@@ -35,9 +36,14 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen flex flex-col bg-black overflow-hidden">
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url("/hero-bg-opt.webp")' }}
+      <Image
+        src="/hero-bg-opt.webp"
+        alt=""
+        fill
+        priority
+        quality={80}
+        className="object-cover object-center z-0"
+        sizes="100vw"
       />
 
       <div className="relative z-10 w-full px-6 md:px-16 max-w-[1440px] mx-auto flex-grow flex flex-col pt-[calc(5rem+2rem)] md:pt-[calc(5rem+4rem)] pb-8 justify-end md:justify-start">
