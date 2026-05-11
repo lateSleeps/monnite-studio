@@ -38,7 +38,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: 'url("https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1ac3cc26268b88480d698_BG.webp")'
+          backgroundImage: 'url("/hero-bg-opt.webp")'
         }}
       />
 
