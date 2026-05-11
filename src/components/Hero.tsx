@@ -37,9 +37,7 @@ export default function Hero() {
     <section className="relative h-screen flex flex-col bg-black overflow-hidden">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url("https://cdn.prod.website-files.com/69e19dfc28bc918295d51fb4/69e1ac3cc26268b88480d698_BG.webp")'
-        }}
+        style={{ backgroundImage: 'url("/hero-bg-opt.webp")' }}
       />
 
       <div className="relative z-10 w-full px-6 md:px-16 max-w-[1440px] mx-auto flex-grow flex flex-col pt-[calc(5rem+2rem)] md:pt-[calc(5rem+4rem)] pb-8 justify-end md:justify-start">
@@ -101,7 +99,7 @@ export default function Hero() {
               >
                 <div className="relative shrink-0">
                   <Avatar className="w-7 h-7">
-                    <AvatarImage src="/profile-monnite.webp" alt="Monnite" />
+                    <AvatarImage src="/profile-monnite-sm.webp" alt="Monnite" />
                     <AvatarFallback>M</AvatarFallback>
                   </Avatar>
                   <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border-2 border-[#343434]" />
